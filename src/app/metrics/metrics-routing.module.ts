@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormComponent } from './form/form.component';
 
 const routes: Routes = [{
-  path: 'caracol',
+  path: 'metrics',
   children: [
     {
-      path: 'b ',
+      path: 'index',
       component: FormComponent
     }
   ]

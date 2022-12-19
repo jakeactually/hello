@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<div style="padding: 20px;">
+    <div [ngStyle]="{ display: 'flex', justifyContent: 'space-between' }">
+        <a routerLink="metrics/index" appBlue>Metrics</a>
+        <mat-spinner diameter="20" *ngIf="loading"></mat-spinner>
+    </div>
+
+    <div [ngStyle]="{ 'height.px': 10 }"></div>
+
+    <router-outlet></router-outlet>
+</div>

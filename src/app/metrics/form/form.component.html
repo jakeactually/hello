@@ -1,1 +1,33 @@
-<p>form works!</p>
+<mat-card>
+    <mat-card-content>
+        <form #myForm="ngForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Country</mat-label>
+                <mat-select
+                    [(ngModel)]="selectedCountry"
+                    name="country"
+                    required
+                    (selectionChange)="selectedCountry && getCities(selectedCountry)">
+                    <mat-option *ngFor="let country of countries" [value]="country">
+                    {{country.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <br>
+
+            <mat-form-field appearance="fill" *ngIf="cities.length">
+                <mat-label>City</mat-label>
+                <mat-select [(ngModel)]="selectedCity" name="city" required>
+                    <mat-option *ngFor="let city of cities" [value]="city">
+                        {{city}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <br>
+
+            <button mat-raised-button color="primary" [disabled]="myForm.invalid">Enviar</button>
+        </form>
+    </mat-card-content>
+</mat-card>
