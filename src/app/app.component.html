@@ -1,7 +1,17 @@
 <div style="padding: 20px;">
     <div [ngStyle]="{ display: 'flex', justifyContent: 'space-between' }">
-        <a routerLink="metrics/index" appBlue>Metrics</a>
+        <div>
+            <a routerLink="users/register">
+                Register
+            </a>
+            <br>
+            <a routerLink="users/register" [queryParams]="{ token: '123' }">
+                Authenticated Register
+            </a>
+        </div>
         <mat-spinner diameter="20" *ngIf="loading"></mat-spinner>
+
+        <div></div>
     </div>
 
     <div [ngStyle]="{ 'height.px': 10 }"></div>

@@ -3,22 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { BlueDirective } from './directives/blue.directive';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Loader } from './helpers/loader.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BlueDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    Loader,
+    { provide: HTTP_INTERCEPTORS, useClass: Loader, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

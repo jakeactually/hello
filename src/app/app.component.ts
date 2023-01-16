@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CountriesService } from './services/countries.service';
+import { Loader, loading } from './helpers/loader.interceptor';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +8,11 @@ import { CountriesService } from './services/countries.service';
 })
 export class AppComponent {
   title = 'hello';
+  loading = false;
 
-  constructor(private cs: CountriesService) {
-
-  }
-
-  get loading() {
-    return this.cs.loading;
+  constructor() {
+    loading.subscribe(val => {
+      this.loading = val;
+    });
   }
 }
